@@ -2,7 +2,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Lint Convention
 
-- boundaries:
+- boundaries: 레이어 분리를 위한 Import 제한
+- import : Import 관련 스타일 및 사용하지 않는 Import 관리
+- no-mutation (var / let / param-reassign) : immutable
 
 ## Getting Started
 
