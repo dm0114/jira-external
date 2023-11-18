@@ -1,3 +1,74 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next/core-web-vitals",
+    "prettier",
+    "plugin:boundaries/recommended"
+  ],
+  "plugins": ["boundaries", "immutable", "import", "unused-imports"],
+
+  "settings": {
+    "boundaries/elements": [
+      /* FIXME: 추후 클린 아키텍쳐 공부해서 적용*/
+    ]
+  },
+  "rules": {
+    "no-var": 1,
+    "no-undef": 1,
+    "no-param-reassign": 1,
+
+    "immutable/no-let": 2,
+    "immutable/no-mutation": 2,
+
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "index",
+          "sibling",
+          "parent",
+          "object",
+          "type"
+        ],
+        "alphabetize": {
+          "order": "asc" /* sort in ascending order. Options: ['ignore', 'asc', 'desc'] */,
+          "caseInsensitive": true /* ignore case. Options: [true, false] */
+        }
+      }
+    ],
+
+    "no-unused-vars": "off", // or "@typescript-eslint/no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+
+    "boundaries/entry-point": [
+      2, // for enabling the rule. 0=off, 1=warn, 2=error.
+      {
+        // disallow all entry-points by default
+        "default": "disallow",
+        "rules": [
+          {
+            // when importing components or modules
+            "target": ["services"],
+
+            // only allow index.js
+            "allow": "index.ts"
+
+            // allow only importing values, not types. Useful only in TypeScript
+            // "importKind": "value"
+          }
+        ]
+      }
+    ]
+  }
 }
