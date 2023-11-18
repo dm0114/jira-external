@@ -1,5 +1,9 @@
 {
-  "extends": ["next/core-web-vitals", "plugin:boundaries/recommended"],
+  "extends": [
+    "next/core-web-vitals",
+    "prettier",
+    "plugin:boundaries/recommended"
+  ],
   "plugins": ["boundaries", "immutable"],
 
   "settings": {
@@ -8,6 +12,8 @@
     ]
   },
   "rules": {
+    "no-var": 1,
+    "no-undef": 1,
     "immutable/no-let": 2,
     "immutable/no-mutation": 2,
     "boundaries/entry-point": [
