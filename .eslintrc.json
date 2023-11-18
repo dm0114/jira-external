@@ -1,3 +1,31 @@
 {
-  "extends": "next/core-web-vitals"
+  "plugins": ["next/core-web-vitals", "boundaries"],
+  "extends": ["plugin:boundaries/recommended"],
+
+  "settings": {
+    "boundaries/elements": [
+      /* FIXME: 추후 클린 아키텍쳐 공부해서 적용*/
+    ]
+  },
+  "rules": {
+    "boundaries/entry-point": [
+      2, // for enabling the rule. 0=off, 1=warn, 2=error.
+      {
+        // disallow all entry-points by default
+        "default": "disallow",
+        "rules": [
+          {
+            // when importing components or modules
+            "target": ["services"],
+
+            // only allow index.js
+            "allow": "index.ts"
+
+            // allow only importing values, not types. Useful only in TypeScript
+            // "importKind": "value"
+          }
+        ]
+      }
+    ]
+  }
 }
