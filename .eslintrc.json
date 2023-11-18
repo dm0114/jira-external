@@ -4,7 +4,7 @@
     "prettier",
     "plugin:boundaries/recommended"
   ],
-  "plugins": ["boundaries", "immutable"],
+  "plugins": ["boundaries", "immutable", "import", "unused-imports"],
 
   "settings": {
     "boundaries/elements": [
@@ -14,8 +14,43 @@
   "rules": {
     "no-var": 1,
     "no-undef": 1,
+    "no-param-reassign": 1,
+
     "immutable/no-let": 2,
     "immutable/no-mutation": 2,
+
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "index",
+          "sibling",
+          "parent",
+          "object",
+          "type"
+        ],
+        "alphabetize": {
+          "order": "asc" /* sort in ascending order. Options: ['ignore', 'asc', 'desc'] */,
+          "caseInsensitive": true /* ignore case. Options: [true, false] */
+        }
+      }
+    ],
+
+    "no-unused-vars": "off", // or "@typescript-eslint/no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+
     "boundaries/entry-point": [
       2, // for enabling the rule. 0=off, 1=warn, 2=error.
       {
