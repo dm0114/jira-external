@@ -1,6 +1,6 @@
 {
-  "plugins": ["next/core-web-vitals", "boundaries"],
-  "extends": ["plugin:boundaries/recommended"],
+  "extends": ["next/core-web-vitals", "plugin:boundaries/recommended"],
+  "plugins": ["boundaries", "immutable"],
 
   "settings": {
     "boundaries/elements": [
@@ -8,6 +8,8 @@
     ]
   },
   "rules": {
+    "immutable/no-let": 2,
+    "immutable/no-mutation": 2,
     "boundaries/entry-point": [
       2, // for enabling the rule. 0=off, 1=warn, 2=error.
       {
